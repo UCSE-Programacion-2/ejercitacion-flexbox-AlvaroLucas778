@@ -1,0 +1,96 @@
+name: Pruebas automáticas (Classroom)
+on:
+  push:
+  workflow_dispatch:
+  repository_dispatch:
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Archivos base y estructura
+        id: test-base-structure
+        uses: classroom-resources/autograding-io-grader@v1
+        with:
+          test-name: "Estructura de carpetas css/ e img/, y existencia de index.html"
+          command: "bash scripts/classroom-check.sh base-structure"
+          expected-output: "CORRECTO"
+          comparison-method: exact
+          timeout: 10
+          max-score: 10
+
+      - name: Hoja de estilos enlazada
+        id: test-css-linked
+        uses: classroom-resources/autograding-io-grader@v1
+        with:
+          test-name: "css/style_base.css presente y enlazado desde index.html"
+          command: "bash scripts/classroom-check.sh css-linked"
+          expected-output: "CORRECTO"
+          comparison-method: exact
+          timeout: 10
+          max-score: 10
+
+      - name: Estructura semántica HTML
+        id: test-semantic-html
+        uses: classroom-resources/autograding-io-grader@v1
+        with:
+          test-name: "Uso de header, section y footer"
+          command: "bash scripts/classroom-check.sh semantic-html"
+          expected-output: "CORRECTO"
+          comparison-method: exact
+          timeout: 10
+          max-score: 20
+
+      - name: Flexbox en el encabezado
+        id: test-flexbox-header
+        uses: classroom-resources/autograding-io-grader@v1
+        with:
+          test-name: "display flex en header, nav ul y logo"
+          command: "bash scripts/classroom-check.sh flexbox-header"
+          expected-output: "CORRECTO"
+          comparison-method: exact
+          timeout: 10
+          max-score: 20
+
+      - name: Flexbox en el contenido principal
+        id: test-flexbox-main
+        uses: classroom-resources/autograding-io-grader@v1
+        with:
+          test-name: "display flex en container, podio, top5 y podio__img"
+          command: "bash scripts/classroom-check.sh flexbox-main"
+          expected-output: "CORRECTO"
+          comparison-method: exact
+          timeout: 10
+          max-score: 20
+
+      - name: Flexbox en el pie de página
+        id: test-flexbox-footer
+        uses: classroom-resources/autograding-io-grader@v1
+        with:
+          test-name: "display flex en footer, logo y lista"
+          command: "bash scripts/classroom-check.sh flexbox-footer"
+          expected-output: "CORRECTO"
+          comparison-method: exact
+          timeout: 10
+          max-score: 20
+
+      - name: Informe de resultados para Classroom
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          TEST-BASE-STRUCTURE_RESULTS: "${{ steps.test-base-structure.outputs.result }}"
+          TEST-CSS-LINKED_RESULTS: "${{ steps.test-css-linked.outputs.result }}"
+          TEST-SEMANTIC-HTML_RESULTS: "${{ steps.test-semantic-html.outputs.result }}"
+          TEST-FLEXBOX-HEADER_RESULTS: "${{ steps.test-flexbox-header.outputs.result }}"
+          TEST-FLEXBOX-MAIN_RESULTS: "${{ steps.test-flexbox-main.outputs.result }}"
+          TEST-FLEXBOX-FOOTER_RESULTS: "${{ steps.test-flexbox-footer.outputs.result }}"
+        with:
+          runners: test-base-structure,test-css-linked,test-semantic-html,test-flexbox-header,test-flexbox-main,test-flexbox-footer
