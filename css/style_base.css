@@ -57,7 +57,10 @@ main {
 }
 
 main .container {
-  /*Añadimos flex*/
+  display: flex;
+  justify-content: center; 
+  gap: 2rem; 
+  flex-wrap: wrap;
 }
 
 main section .card {
@@ -80,6 +83,9 @@ main section .podio {
   background: #fff;
   font-weight: bold;
   /*Añadimos flex*/
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
 }
 main section .podio h3 {
   color: var(--red);
@@ -96,15 +102,23 @@ main section .podio h3 {
 
 .top5 {
   /*Añadimos flex*/
+  display: flex;
+  justify-content: space-around; 
+  align-items: center; 
+  width: 100%;
 }
 
 .top5 .podio__pizzas ol li {
   padding: 10px 0px;
+  
 }
 
 .top5 .podio__img {
   padding-bottom: 60px;
   /*Añadimos flex*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer {
