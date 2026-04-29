@@ -71,6 +71,8 @@ main section .card {
 
 main section .delivery {
   background: url("../img/delivery.jpg");
+  background-size: cover; 
+  background-position: center; 
   color: var(--red);
   font-size: 1.5rem;
   font-weight: bold;
