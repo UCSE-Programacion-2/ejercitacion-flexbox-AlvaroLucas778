@@ -65,8 +65,8 @@ main .container {
 
 main section .card {
   border-radius: 5px;
-  height: 21.875rem; /* 350px/16px (16px=1rem) */
-  width: 30.625rem;  /* 490px/16px (16px=1rem) */
+  height: 21.875rem; 
+  width: 30.625rem;  
 }
 
 main section .delivery {
@@ -125,15 +125,25 @@ footer {
   background: #222;
   padding: 19px 20px;
   /*Añadimos flex*/
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  flex-direction: row-reverse;
 }
 
 footer .footer__logo {
   color: var(--lightWhite);
   font-size: 14px;
   /*Añadimos flex*/
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 footer ul {
   color: var(--lightWhite);
   /*Añadimos flex*/
+  display: flex;
+  flex-direction: column; 
+  gap: 0.5rem;
 }
