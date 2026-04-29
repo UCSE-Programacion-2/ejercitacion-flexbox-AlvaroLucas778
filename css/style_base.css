@@ -23,14 +23,23 @@ header {
   color: var(--white);
   padding: 0.5rem 1.25rem;
   /*Añadimos flex*/
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
 }
 
 header nav ul {
   /*Añadimos flex*/
+  display: flex;
+  gap: 1.5rem; 
+  align-items: center;
 }
 
 header .header__logo {
   /*Añadimos flex*/
+  display: flex;
+  align-items: center; 
+  gap: 0.5rem; 
 }
 
 header .header__logo span,
@@ -43,23 +52,27 @@ footer .footer__logo span:nth-child(2) {
 }
 main {
     padding: 35px 0px;
-    /* Alto del main: alto viewport - alto Header - alto Footer 
-       Me aseguro que el main ocupa todo el alto disponible */
+   
     min-height: calc(100vh - 100px - 150px);  
 }
 
 main .container {
-  /*Añadimos flex*/
+  display: flex;
+  justify-content: center; 
+  gap: 2rem; 
+  flex-wrap: wrap;
 }
 
 main section .card {
   border-radius: 5px;
-  height: 21.875rem; /* 350px/16px (16px=1rem) */
-  width: 30.625rem;  /* 490px/16px (16px=1rem) */
+  height: 21.875rem; 
+  width: 30.625rem;  
 }
 
 main section .delivery {
   background: url("../img/delivery.jpg");
+  background-size: cover; 
+  background-position: center; 
   color: var(--red);
   font-size: 1.5rem;
   font-weight: bold;
@@ -72,6 +85,9 @@ main section .podio {
   background: #fff;
   font-weight: bold;
   /*Añadimos flex*/
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
 }
 main section .podio h3 {
   color: var(--red);
@@ -88,30 +104,48 @@ main section .podio h3 {
 
 .top5 {
   /*Añadimos flex*/
+  display: flex;
+  justify-content: space-around; 
+  align-items: center; 
+  width: 100%;
 }
 
 .top5 .podio__pizzas ol li {
   padding: 10px 0px;
+  
 }
 
 .top5 .podio__img {
   padding-bottom: 60px;
   /*Añadimos flex*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer {
   background: #222;
   padding: 19px 20px;
   /*Añadimos flex*/
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  flex-direction: row-reverse;
 }
 
 footer .footer__logo {
   color: var(--lightWhite);
   font-size: 14px;
   /*Añadimos flex*/
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 footer ul {
   color: var(--lightWhite);
   /*Añadimos flex*/
+  display: flex;
+  flex-direction: column; 
+  gap: 0.5rem;
 }
